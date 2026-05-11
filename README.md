@@ -1,6 +1,15 @@
-# TREE(3) Sequence Explorer
+# TREE(3) Sequence Explorer: Rust CLI for Kruskal Trees, Googology, and SVG Visualization
 
-A Rust CLI that **computes and visualizes candidate initial sequences** for Harvey Friedman's TREE(k) function — one of the most mind-bendingly large numbers in mathematics. This is not a static drawing tool; it actually runs the combinatorial search, checks homeomorphic tree embeddings, and renders each valid tree as an SVG file.
+**TREE(3) Sequence Explorer** is a Rust command-line tool for experimenting with Harvey Friedman's TREE function, Kruskal's Tree Theorem, rooted labeled trees, homeomorphic tree embeddings, and googology-scale finite combinatorics.
+
+It **computes and visualizes candidate initial sequences** for TREE(k), then renders each valid rooted tree as an SVG file. This is not a static drawing tool: it runs the combinatorial search, checks homeomorphic tree embeddings, supports greedy and exhaustive strategies, and exports reproducible SVG/JSON output.
+
+Common searches this project is meant to answer:
+
+- How can I compute or visualize initial TREE(3) sequences?
+- What does a TREE(3) rooted labeled tree sequence look like?
+- How do homeomorphic embeddings work for Kruskal trees?
+- Is there a Rust implementation for exploring TREE(k), TREE(2), or TREE(3)?
 
 | T1 | T2 | T3 | T4 | T5 |
 |:--:|:--:|:--:|:--:|:--:|
@@ -14,22 +23,36 @@ A Rust CLI that **computes and visualizes candidate initial sequences** for Harv
 
 ---
 
+## At a Glance
+
+| Feature | Details |
+|---------|---------|
+| Domain | TREE(3), TREE(k), Kruskal's Tree Theorem, graph minors, googology |
+| Implementation | Rust 2021 CLI with parallel candidate sweeps |
+| Core algorithm | Enumerates rooted labeled trees and rejects later trees where an earlier tree embeds |
+| Output | Individual SVG trees, live `overview.svg`, optional `sequence.json` |
+| Strategies | `largest`, `smallest`, `random`, `optimal` exhaustive search |
+| Good starting point | `cargo run -- generate --count 10` |
+
+---
+
 ## Table of Contents
 
-1. [What is TREE(3)?](#1-what-is-tree3)
-2. [Original Specification](#2-original-specification)
-3. [Mathematical Model](#3-mathematical-model)
-4. [Implementation Decisions](#4-implementation-decisions)
-5. [Architecture](#5-architecture)
-6. [Module Reference](#6-module-reference)
-7. [Building](#7-building)
-8. [Running](#8-running)
-9. [CLI Reference](#9-cli-reference)
-10. [Example Scripts](#10-example-scripts)
-11. [Output Format](#11-output-format)
-12. [Example Output](#12-example-output)
-13. [Known Limitations](#13-known-limitations)
-14. [References](#references)
+1. [At a Glance](#at-a-glance)
+2. [What is TREE(3)?](#1-what-is-tree3)
+3. [Original Specification](#2-original-specification)
+4. [Mathematical Model](#3-mathematical-model)
+5. [Implementation Decisions](#4-implementation-decisions)
+6. [Architecture](#5-architecture)
+7. [Module Reference](#6-module-reference)
+8. [Building](#7-building)
+9. [Running](#8-running)
+10. [CLI Reference](#9-cli-reference)
+11. [Example Scripts](#10-example-scripts)
+12. [Output Format](#11-output-format)
+13. [Example Output](#12-example-output)
+14. [Known Limitations](#13-known-limitations)
+15. [References](#references)
 
 ---
 

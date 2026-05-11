@@ -2,6 +2,11 @@
 name = "tree3"
 version = "0.1.0"
 edition = "2021"
+description = "Rust CLI for exploring Harvey Friedman's TREE(3), Kruskal tree theorem sequences, homeomorphic tree embeddings, and SVG visualizations."
+repository = "https://github.com/itlezy/rust-tree3"
+readme = "README.md"
+keywords = ["tree3", "kruskal", "googology", "combinatorics", "svg"]
+categories = ["algorithms", "command-line-utilities", "science"]
 
 [[bin]]
 name = "tree3"
